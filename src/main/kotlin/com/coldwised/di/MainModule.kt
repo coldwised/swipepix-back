@@ -1,7 +1,7 @@
 package com.coldwised.di
 
-import com.coldwised.data.ImageDataSource
-import com.coldwised.data.ImageDataSourceImpl
+import com.coldwised.data.ProductDataSource
+import com.coldwised.data.ProductDataSourceImpl
 import com.coldwised.room.RoomController
 import org.koin.dsl.module
 import org.litote.kmongo.coroutine.coroutine
@@ -14,8 +14,8 @@ val mainModule = module {
             .coroutine
             .getDatabase("image_db")
     }
-    single<ImageDataSource> {
-        ImageDataSourceImpl(
+    single<ProductDataSource> {
+        ProductDataSourceImpl(
             get()
         )
     }

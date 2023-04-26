@@ -1,13 +1,18 @@
 package com.coldwised.data.model
 
+import kotlinx.serialization.Serializable
 import org.bson.codecs.pojo.annotations.BsonId
-import org.bson.types.ObjectId
 
-@kotlinx.serialization.Serializable
-data class ImageModel(
-    val url: String,
-    val timestamp: Long,
-    val senderUsername: String,
+@Serializable
+data class Product(
     @BsonId
-    val id: String = ObjectId().toString(),
+    val id: Int,
+    val images: List<String>,
+    val rating: Double?,
+    val name: String,
+    val description: String,
+    val price: Float,
+    val country: String,
+    val categoryId: Int,
+    val params: List<Pair<String, String>>
 )
