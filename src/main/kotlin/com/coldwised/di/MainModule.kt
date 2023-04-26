@@ -12,7 +12,7 @@ val mainModule = module {
         KMongo
             .createClient()
             .coroutine
-            .getDatabase("image_db")
+            .getDatabase("product_db")
     }
     single<ProductDataSource> {
         ProductDataSourceImpl(
