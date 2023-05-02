@@ -26,4 +26,8 @@ class RoomController(
     suspend fun getAllCatalogCategories(): List<Category> {
         return productDataSource.getCatalogCategories()
     }
+
+    suspend fun getChildCategories(parentId: String): List<Category> {
+        return productDataSource.getChildCategories(parentId)
+    }
 }

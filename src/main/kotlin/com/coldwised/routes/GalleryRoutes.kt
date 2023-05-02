@@ -14,3 +14,13 @@ fun Route.getCatalogCategories(roomController: RoomController) {
         )
     }
 }
+
+fun Route.getChildCategories(roomController: RoomController) {
+    get("/child_categories") {
+        val parentId = call.parameters["parentId"] ?: return@get
+        call.respond(
+            HttpStatusCode.OK,
+            roomController.getChildCategories(parentId)
+        )
+    }
+}

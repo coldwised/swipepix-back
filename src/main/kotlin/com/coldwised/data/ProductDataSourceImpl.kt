@@ -3,6 +3,7 @@ package com.coldwised.data
 import com.coldwised.data.model.Category
 import com.coldwised.data.model.Product
 import org.litote.kmongo.coroutine.CoroutineDatabase
+import org.litote.kmongo.eq
 
 class ProductDataSourceImpl(
     db: CoroutineDatabase
@@ -44,5 +45,9 @@ class ProductDataSourceImpl(
 
     override suspend fun getCatalogCategories(): List<Category> {
         return categories.find().toList()
+    }
+
+    override suspend fun getChildCategories(parentId: String): List<Category> {
+        return categories.find(Category::id eq parentId).toList()
     }
 }
