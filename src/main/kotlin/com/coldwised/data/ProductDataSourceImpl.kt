@@ -5,7 +5,7 @@ import com.coldwised.data.model.Product
 import org.litote.kmongo.coroutine.CoroutineDatabase
 
 class ProductDataSourceImpl(
-    private val db: CoroutineDatabase
+    db: CoroutineDatabase
 ): ProductDataSource {
 
     private val products = db.getCollection<Product>()
@@ -29,13 +29,11 @@ class ProductDataSourceImpl(
                     childCategories = listOf(1)
                 ),
                 Category(
-                    id = 1,
                     categoryImage = "",
                     name = "category name 2",
                     childCategories = listOf()
                 ),
                 Category(
-                    id = 2,
                     categoryImage = "",
                     name = "category name 3",
                     childCategories = listOf()

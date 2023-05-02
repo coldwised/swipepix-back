@@ -2,13 +2,14 @@ package com.coldwised.data.model
 
 import kotlinx.serialization.Serializable
 import org.bson.codecs.pojo.annotations.BsonId
+import org.litote.kmongo.Id
 
 @Serializable
 data class Product(
     @BsonId
-    val id: Int,
+    val id: Id<Product>? = null,
     val images: List<String>,
-    val rating: Double?,
+    val rating: Float? = null,
     val name: String,
     val description: String,
     val price: Float,
