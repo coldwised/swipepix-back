@@ -24,3 +24,13 @@ fun Route.getChildCategories(roomController: RoomController) {
         )
     }
 }
+
+fun Route.getProductsByCategory(roomController: RoomController) {
+    get("/get_products_by_category") {
+        val categoryId = call.parameters["categoryId"] ?: return@get
+        call.respond(
+            HttpStatusCode.OK,
+            roomController.getProductsByCategory(categoryId)
+        )
+    }
+}

@@ -15,8 +15,8 @@ class RoomController(
             fillTestCategory()
         }
     }
-    suspend fun getAllProducts(): List<Product> {
-        return productDataSource.getAllProducts()
+    suspend fun getProductsByCategory(categoryId: String): List<Product> {
+        return productDataSource.getProductsByCategory(categoryId)
     }
 
     private suspend fun fillTestCategory() {

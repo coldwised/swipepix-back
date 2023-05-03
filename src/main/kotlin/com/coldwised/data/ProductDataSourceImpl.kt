@@ -12,8 +12,8 @@ class ProductDataSourceImpl(
     private val products = db.getCollection<Product>()
     private val categories = db.getCollection<Category>()
 
-    override suspend fun getAllProducts(): List<Product> {
-        return products.find().toList()
+    override suspend fun getProductsByCategory(categoryId: String): List<Product> {
+        return products.find(Product::id eq categoryId).toList()
     }
 
     override suspend fun insertProduct(product: Product) {
@@ -25,17 +25,19 @@ class ProductDataSourceImpl(
         categories.insertMany(
             listOf(
                 Category(
-                    categoryImage = "",
+                    image = "https://static.svyaznoy.ru/upload/files/image/article-action-detail-listing-image-id/670/1.png",
                     name = "Смартфоны и гаджеты",
-                    childCategories = listOf(1)
+                    childCategories = listOf("abc, abc2")
                 ),
                 Category(
-                    categoryImage = "",
+                    id = "abc",
+                    image = "https://photo.brestcity.com/2022/07/smart1.jpg",
                     name = "category name 2",
                     childCategories = listOf()
                 ),
                 Category(
-                    categoryImage = "",
+                    id = "abc2",
+                    image = "https://photo.brestcity.com/2022/07/smart1.jpg",
                     name = "category name 3",
                     childCategories = listOf()
                 )

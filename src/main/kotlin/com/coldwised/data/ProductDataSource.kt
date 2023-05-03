@@ -5,7 +5,7 @@ import com.coldwised.data.model.Product
 
 interface ProductDataSource {
 
-    suspend fun getAllProducts(): List<Product>
+    suspend fun getProductsByCategory(categoryId: String): List<Product>
 
     suspend fun insertProduct(product: Product)
 
