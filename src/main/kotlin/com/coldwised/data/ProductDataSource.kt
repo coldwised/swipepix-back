@@ -9,8 +9,6 @@ interface ProductDataSource {
 
     suspend fun insertProduct(product: Product)
 
-    suspend fun fillTestCategory()
-
     suspend fun getCatalogCategories(): List<Category>
 
     suspend fun getChildCategories(parentId: String): List<Category>

@@ -7,7 +7,8 @@ import org.bson.types.ObjectId
 data class Category(
     @BsonId
     val id: String = ObjectId().toString(),
-    val image: String,
+    val image: String? = null,
     val name: String,
+    val parentId: String? = null,
     val childCategories: List<String>,
 )

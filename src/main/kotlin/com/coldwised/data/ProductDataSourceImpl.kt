@@ -20,36 +20,11 @@ class ProductDataSourceImpl(
         products.insertOne(product)
     }
 
-    override suspend fun fillTestCategory() {
-        categories.deleteMany()
-        categories.insertMany(
-            listOf(
-                Category(
-                    image = "https://static.svyaznoy.ru/upload/files/image/article-action-detail-listing-image-id/670/1.png",
-                    name = "Смартфоны и гаджеты",
-                    childCategories = listOf("abc, abc2")
-                ),
-                Category(
-                    id = "abc",
-                    image = "https://photo.brestcity.com/2022/07/smart1.jpg",
-                    name = "category name 2",
-                    childCategories = listOf()
-                ),
-                Category(
-                    id = "abc2",
-                    image = "https://photo.brestcity.com/2022/07/smart1.jpg",
-                    name = "category name 3",
-                    childCategories = listOf()
-                )
-            )
-        )
-    }
-
     override suspend fun getCatalogCategories(): List<Category> {
-        return categories.find().toList()
+        return categories.find(Category::parentId eq null).toList()
     }
 
     override suspend fun getChildCategories(parentId: String): List<Category> {
-        return categories.find(Category::id eq parentId).toList()
+        return categories.find(Category::parentId eq parentId).toList()
     }
 }
