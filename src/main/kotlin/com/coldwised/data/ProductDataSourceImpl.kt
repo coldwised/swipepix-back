@@ -13,7 +13,9 @@ class ProductDataSourceImpl(
     private val categories = db.getCollection<Category>()
 
     override suspend fun getProductsByCategory(categoryId: String): List<Product> {
-        return products.find(Product::id eq categoryId).toList()
+        val sdf = products.find(Product::categoryId eq categoryId).toList()
+        val a = sdf
+        return products.find(Product::categoryId eq categoryId).toList()
     }
 
     override suspend fun insertProduct(product: Product) {

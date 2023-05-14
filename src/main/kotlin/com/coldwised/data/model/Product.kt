@@ -9,11 +9,11 @@ data class Product(
     @BsonId
     val id: String = ObjectId().toString(),
     val images: List<String>,
-    val rating: Float? = null,
+    val rating: Float?,
     val name: String,
-    val description: String,
+    val description: String?,
     val price: Float,
-    val country: String,
-    val categoryId: Int,
+    val country: String?,
+    val categoryId: String,
     val params: List<Pair<String, String>>
 )
