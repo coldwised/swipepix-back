@@ -11,5 +11,7 @@ interface ProductDataSource {
 
     suspend fun getCatalogCategories(): List<Category>
 
+    suspend fun getProductById(id: String): Product?
+
     suspend fun getChildCategories(parentId: String): List<Category>
 }

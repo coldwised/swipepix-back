@@ -25,6 +25,22 @@ fun Route.getChildCategories(roomController: RoomController) {
     }
 }
 
+fun Route.getProductById(roomController: RoomController) {
+    get("/get_product_by_id") {
+        val id = call.parameters["productId"] ?: return@get
+        roomController.getProductById(id)?.let { product ->
+            call.respond(
+                HttpStatusCode.OK,
+                product
+            )
+        } ?: run {
+            call.respond(
+                HttpStatusCode.NotFound,
+            )
+        }
+    }
+}
+
 fun Route.getProductsByCategory(roomController: RoomController) {
     get("/get_products_by_category") {
         val categoryId = call.parameters["categoryId"] ?: return@get

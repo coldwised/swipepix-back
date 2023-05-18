@@ -18,4 +18,8 @@ class RoomController(
     suspend fun getChildCategories(parentId: String): List<Category> {
         return productDataSource.getChildCategories(parentId)
     }
+
+    suspend fun getProductById(id: String): Product? {
+        return productDataSource.getProductById(id)
+    }
 }

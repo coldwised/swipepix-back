@@ -13,8 +13,6 @@ class ProductDataSourceImpl(
     private val categories = db.getCollection<Category>()
 
     override suspend fun getProductsByCategory(categoryId: String): List<Product> {
-        val sdf = products.find(Product::categoryId eq categoryId).toList()
-        val a = sdf
         return products.find(Product::categoryId eq categoryId).toList()
     }
 
@@ -24,6 +22,10 @@ class ProductDataSourceImpl(
 
     override suspend fun getCatalogCategories(): List<Category> {
         return categories.find(Category::parentId eq null).toList()
+    }
+
+    override suspend fun getProductById(id: String): Product? {
+        return products.findOne(Product::id eq id)
     }
 
     override suspend fun getChildCategories(parentId: String): List<Category> {
