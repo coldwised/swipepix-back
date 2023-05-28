@@ -4,6 +4,7 @@ import com.coldwised.data.model.Category
 import com.coldwised.data.model.Product
 import org.litote.kmongo.coroutine.CoroutineDatabase
 import org.litote.kmongo.eq
+import org.litote.kmongo.regex
 
 class ProductDataSourceImpl(
     db: CoroutineDatabase
@@ -26,6 +27,10 @@ class ProductDataSourceImpl(
 
     override suspend fun getProductById(id: String): Product? {
         return products.findOne(Product::id eq id)
+    }
+
+    override suspend fun getProductByQuery(query: String): List<Product> {
+        return products.find(Product::name regex query).toList()
     }
 
     override suspend fun getChildCategories(parentId: String): List<Category> {

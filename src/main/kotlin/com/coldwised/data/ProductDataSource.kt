@@ -9,6 +9,8 @@ interface ProductDataSource {
 
     suspend fun insertProduct(product: Product)
 
+    suspend fun getProductByQuery(query: String): List<Product>
+
     suspend fun getCatalogCategories(): List<Category>
 
     suspend fun getProductById(id: String): Product?

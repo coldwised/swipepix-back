@@ -50,3 +50,13 @@ fun Route.getProductsByCategory(roomController: RoomController) {
         )
     }
 }
+
+fun Route.getProductByQuery(roomController: RoomController) {
+    get("/get_product_by_query") {
+        val query = call.parameters["query"] ?: return@get
+        call.respond(
+            HttpStatusCode.OK,
+            roomController.getProductByQuery(query)
+        )
+    }
+}
